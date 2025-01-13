@@ -11,14 +11,31 @@ function logout(){
   return  <Navigate to="/login"/>
 }
 
+function RegisterAndLogout(){
+  localStorage.clear()
+  return <Register />
+}
 function App() {
 
  
 
   return (
-    <>
-      
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+
+            </ProtectedRoute>
+          }
+
+        />
+        <Route path="/login" element={<Login />}/>
+        <Route path="/register" element={<RegisterAndLogout />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
